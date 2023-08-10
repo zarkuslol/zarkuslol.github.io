@@ -30,3 +30,26 @@ function reveal() {
         }
     }
 }
+
+// Carrega idade automaticamente
+function calculateAge(year, month, day) {
+    var d = new Date();
+
+    var actualYear = d.getFullYear();
+    var actualMonth = d.getMonth() + 1;
+    var actualDay = d.getDay();
+
+    var totalAge = actualYear - year;
+
+    if (actualMonth < month || actualMonth == month && actualDay < day) {
+        totalAge--;
+    }
+
+    return totalAge < 0 ? 0 : totalAge;
+}
+
+window.onload = () => {
+    var ageSpan = document.querySelector(".age");
+    var age = calculateAge(2003, 5, 3);
+    ageSpan.textContent = age;
+}
